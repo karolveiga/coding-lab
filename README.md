@@ -33,12 +33,13 @@ The goal isn't to make everything perfect — it's to learn, experiment and buil
 
 coding-lab/
 │
+├── LICENSE
+├── README.md
 ├── C/
 ├── C++/
 ├── Python/
 ├── algorithms/
-├── projects/
-└── README.md
+└── projects/
 
 The structure may evolve as the laboratory grows.
 
