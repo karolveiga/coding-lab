@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Um convite muito importante 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ffd6e7,
+                #ffeef6,
+                #ffd1e8
+            );
+
+            overflow: hidden;
+        }
+
+        .card {
+            width: min(90%, 520px);
+
+            padding: 42px 24px;
+
+            text-align: center;
+
+            background: white;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .heart {
+            font-size: 65px;
+
+            animation: pulse 1.2s infinite;
+        }
+
+        h1 {
+            color: #e75480;
+            margin: 10px 0;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /*
+        =====================================
+        BOTÕES INICIAIS
+        =====================================
+        */
+
+        .buttons {
+            margin-top: 35px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        button {
+            border: none;
+
+            padding: 15px 30px;
+
+            border-radius: 50px;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        #sim {
+            background: #e75480;
+
+            color: white;
+
+            box-shadow:
+                0 5px 15px rgba(231, 84, 128, 0.35);
+
+            transition: transform 0.2s;
+        }
+
+        #sim:hover {
+            transform: scale(1.1);
+        }
+
+        /*
+        =====================================
+        BOTÃO NÃO
+        =====================================
+        */
+
+        #nao {
+            background: #ddd;
+
+            color: #555;
+
+            /*
+            Ele só fica fixed DEPOIS que começar
+            a fugir pelo JavaScript.
+            */
+
+            z-index: 100;
+
+            transition:
+                left 0.2s ease,
+                top 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        /*
+        =====================================
+        TELA FINAL
+        =====================================
+        */
+
+        #confirmacao {
+            display: none;
+
+            animation: aparecer 0.8s ease;
+        }
+
+        .check {
+            font-size: 70px;
+        }
+
+        .titulo {
+            color: #e75480;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            margin: 12px 0 25px;
+        }
+
+        .ticket {
+            margin-top: 20px;
+
+            padding: 22px;
+
+            border: 2px dashed #e75480;
+
+            border-radius: 20px;
+
+            background: #fff5f9;
+
+            text-align: left;
+        }
+
+        .ticket p {
+            margin: 10px 0;
+
+            font-size: 17px;
+        }
+
+        .obs {
+            margin-top: 25px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #e75480;
+        }
+
+        /*
+        =====================================
+        CORAÇÕES
+        =====================================
+        */
+
+        .heart-float {
+            position: fixed;
+
+            font-size: 25px;
+
+            pointer-events: none;
+
+            animation:
+                subir 3s linear forwards;
+        }
+
+        @keyframes pulse {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes subir {
+
+            from {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            to {
+                transform:
+                    translateY(-100vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="card">
+
+        <!-- =================================
+             CONVITE INICIAL
+        ================================== -->
+
+        <div id="convite">
+
+            <div class="heart">
+                💗
+            </div>
+
+            <h1>
+                Oi, meu amor! 🥰
+            </h1>
+
+            <p>
+                Tenho uma pergunta extremamente importante
+                que precisa ser respondida imediatamente...
+            </p>
+
+            <h2>
+                Quer sair comigo? 💕
+            </h2>
+
+
+            <!-- OS DOIS BOTÕES JÁ APARECEM AQUI -->
+
+            <div class="buttons">
+
+                <button id="sim">
+                    SIM 😍
+                </button>
+
+                <button id="nao">
+                    NÃO 😐
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             CONFIRMAÇÃO
+        ================================== -->
+
+        <div id="confirmacao">
+
+            <div class="check">
+                💗
+            </div>
+
+            <div class="titulo">
+                DATE CONFIRMADO! 💌
+            </div>
+
+            <p>
+                Parabéns, gatinho lindo cheiroso meu amor.
+                Você acaba de tomar uma excelente decisão!
+            </p>
+
+
+            <div class="ticket">
+
+                <p>
+                    💕 <strong>Evento:</strong>
+                    Sair com sua namorada
+                </p>
+
+                <p>
+                    📅 <strong>Data:</strong>
+                    A combinar
+                </p>
+
+                <p>
+                    🕐 <strong>Horário:</strong>
+                    A combinar
+                </p>
+
+                <p>
+                    📍 <strong>Local:</strong>
+                    Surpresa 👀
+                </p>
+
+                <p>
+                    👩‍❤️‍👨 <strong>Companhia:</strong>
+                    Sua namorada, obviamente
+                </p>
+
+            </div>
+
+
+            <div class="obs">
+
+                ⚠️ OBSERVAÇÃO ⚠️
+
+                <br><br>
+
+                Você clicou em SIM.
+
+                <br>
+
+                Não adianta voltar atrás. 😌
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const sim =
+            document.getElementById("sim");
+
+        const nao =
+            document.getElementById("nao");
+
+        const convite =
+            document.getElementById("convite");
+
+        const confirmacao =
+            document.getElementById("confirmacao");
+
+
+        let tentativas = 0;
+
+
+        /*
+        =====================================
+        FRASES DO BOTÃO NÃO
+        =====================================
+        */
+
+        const frases = [
+
+            "NÃO 😐",
+
+            "tem certeza? 🤨",
+
+            "pensa bem...",
+
+            "amor... 🥺",
+
+            "vc vai mesmo dizer nao??? 😭",
+
+            "eh sério isso? 😭",
+
+            "AMOR???",
+
+            "CLICA NO SIM!!! 💗"
+
+        ];
+
+
+        /*
+        =====================================
+        FAZER O NÃO FUGIR
+        =====================================
+        */
+
+        function fugir(event) {
+
+            if (event) {
+                event.preventDefault();
+            }
+
+
+            tentativas++;
+
+
+            /*
+            Muda o texto
+            */
+
+            nao.textContent =
+                frases[
+                    Math.min(
+                        tentativas,
+                        frases.length - 1
+                    )
+                ];
+
+
+            /*
+            Agora ele vira um botão
+            que pode andar pela tela
+            */
+
+            nao.style.position = "fixed";
+
+
+            /*
+            Vai ficando menor
+            */
+
+            const escala =
+                Math.max(
+                    0.42,
+                    1 - tentativas * 0.08
+                );
+
+            nao.style.transform =
+                `scale(${escala})`;
+
+
+            /*
+            Escolhe uma posição aleatória
+            */
+
+            const margem = 15;
+
+            const largura =
+                nao.offsetWidth;
+
+            const altura =
+                nao.offsetHeight;
+
+
+            const maxX =
+                Math.max(
+                    margem,
+                    window.innerWidth -
+                    largura -
+                    margem
+                );
+
+
+            const maxY =
+                Math.max(
+                    margem,
+                    window.innerHeight -
+                    altura -
+                    margem
+                );
+
+
+            const x =
+                margem +
+                Math.random() *
+                (maxX - margem);
+
+
+            const y =
+                margem +
+                Math.random() *
+                (maxY - margem);
+
+
+            nao.style.left =
+                x + "px";
+
+            nao.style.top =
+                y + "px";
+
+        }
+
+
+        /*
+        =====================================
+        COMPUTADOR
+        =====================================
+        */
+
+        nao.addEventListener(
+            "mouseenter",
+            fugir
+        );
+
+
+        /*
+        =====================================
+        CELULAR
+        =====================================
+        */
+
+        nao.addEventListener(
+            "touchstart",
+            fugir,
+            {
+                passive: false
+            }
+        );
+
+
+        /*
+        Caso ele consiga clicar
+        */
+
+        nao.addEventListener(
+            "click",
+            fugir
+        );
+
+
+        /*
+        =====================================
+        CLICOU NO SIM
+        =====================================
+        */
+
+        sim.addEventListener(
+            "click",
+            function() {
+
+                convite.style.display =
+                    "none";
+
+
+                confirmacao.style.display =
+                    "block";
+
+
+                chuvaDeCoracoes();
+
+            }
+        );
+
+
+        /*
+        =====================================
+        CHUVA DE CORAÇÕES
+        =====================================
+        */
+
+        function chuvaDeCoracoes() {
+
+            const emojis = [
+
+                "💗",
+                "💕",
+                "💖",
+                "💘",
+                "❤️",
+                "💓",
+                "💞",
+                "💝"
+
+            ];
+
+
+            for (
+                let i = 0;
+                i < 60;
+                i++
+            ) {
+
+                const coracao =
+                    document.createElement("div");
+
+
+                coracao.className =
+                    "heart-float";
+
+
+                coracao.textContent =
+                    emojis[
+                        Math.floor(
+                            Math.random() *
+                            emojis.length
+                        )
+                    ];
+
+
+                coracao.style.left =
+                    Math.random() *
+                    100 +
+                    "vw";
+
+
+                coracao.style.top =
+                    "100vh";
+
+
+                coracao.style.animationDuration =
+                    (
+                        2 +
+                        Math.random() * 3
+                    ) +
+                    "s";
+
+
+                document.body.appendChild(
+                    coracao
+                );
+
+
+                setTimeout(
+                    () => coracao.remove(),
+                    5000
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
